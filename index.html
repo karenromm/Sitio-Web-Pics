@@ -1,0 +1,84 @@
+# Sitio-Web-Pics
+
+Sitio de imágenes para variedad de usuarios entusiastas de la fotografía
+
+<html><head>
+         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>   
+    </head>
+ <body>   
+  <div id="app1"> 
+   
+
+<img v-bind:src="fuenteDeImagen" v-bind:width="tamanoDeImagen" v-on:click.prevent="cambiarImagen">
+
+<br>
+<button v-on:click.prevent="meGusta">Me Gusta
+
+    
+</button>#likes:{{numLike}}
+  </div> 
+  
+<script>
+  
+  var app=new Vue ({
+    el:"#app1",
+    data:
+       {
+           mensaje: 'Utilizamos colores claros',
+           color:"color:#EC7063",
+           fuenteDeImagen:"https://bit.ly/3MdeDMV",
+           tamanoDeImagen:"40%",
+           likes:0,
+            
+             
+           
+         imagenes: 
+           [
+        "https://images.pexels.com/photos/9932477/pexels-photo-9932477.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9980579/pexels-photo-9980579.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10339349/pexels-photo-10339349.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9785151/pexels-photo-9785151.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/9764524/pexels-photo-9764524.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10305718/pexels-photo-10305718.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10194720/pexels-photo-10194720.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10234899/pexels-photo-10234899.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10152764/pexels-photo-10152764.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250",
+        "https://images.pexels.com/photos/10058298/pexels-photo-10058298.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=250"
+           ],
+           
+       like:[0,0,0,0,0,0,0,0,0,0],
+       indice:0,
+       fuenteDeImagen:"",
+       numLike:0,
+                   
+       },
+    mounted(){
+        this.cambiarImagen();
+    },
+    methods:{
+        cambiaColor: function()
+        {
+          this.color="color: pink";
+        this.mensaje="Cambiar de colores es divertido";
+            
+        },
+       cambiarImagen: function()
+        {
+            
+        this.indice=Math.round(Math.random()*9);
+        this.fuenteDeImagen=this.imagenes[this.indice];
+        this.numLike=this.like[this.indice];
+      
+        },
+      
+        meGusta: function() {
+        this.like[this.indice]+=1;
+            this.numLike=this.like[this.indice];
+        },
+        
+    },
+})
+  <script>
+  </body></html>
+  
+ 
